@@ -1,0 +1,74 @@
+﻿@model Photo
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edit Photo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Edit Photo</h2>
+
+        @using (Html.BeginForm("Update", "Photo", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.Id)
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Opis:</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Opis, new { @class = "form-control", required = "true" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Autor:</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Autor, new { @class = "form-control", required = "true" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Data Publickacji:</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.DataPublickacji, new { @class = "form-control", @type = "date", required = "true" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Rozdzielczość:</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Rozdzielczosc, new { @class = "form-control", required = "true" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Format:</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Format, new { @class = "form-control", required = "true" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">AparatId:</label>
+                <div class="col-sm-9">
+                    @Html.DropDownListFor(m => m.AparatId, Model.Aparats, "Select Aparat", new { @class = "form-control", required = "true" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a href="@Url.Action("Details", "Photo", new { id = Model.Id })" class="btn btn-secondary ml-2">Cancel</a>
+            </div>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

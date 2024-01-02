@@ -1,0 +1,53 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Photo List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Photo List</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Autor</th>
+                        <th>Data Publickacji</th>
+                        <th>Rozdzielczosc</th>
+                        <th>Format</th>
+                        <th>Actions</th> <!-- Nowa kolumna na przyciski akcji -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var photo in Model)
+                    {
+                        <tr>
+                            <td>@photo.Id</td>
+                            <td>@photo.Autor</td>
+                            <td>@photo.DataPublickacji.ToShortDateString()</td>
+                            <td>@photo.Rozdzielczosc</td>
+                            <td>@photo.Format</td>
+                            <td>
+                                <a href="@Url.Action("Update", "Photo", new { id = photo.Id })" class="btn btn-primary btn-sm">Update</a>
+                                <a href="@Url.Action("Delete", "Photo", new { id = photo.Id })" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="@Url.Action("Details", "Photo", new { id = photo.Id })" class="btn btn-info btn-sm">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
