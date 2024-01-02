@@ -108,6 +108,7 @@ namespace PhotoApp.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
             var contact = _photoService.FindById(id);
